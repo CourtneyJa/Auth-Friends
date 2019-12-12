@@ -15,7 +15,7 @@ const FriendForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     axiosWithAuth()
-      .post("/friends", newFriend)
+      .post('/friends', newFriend)
       .then(res => {
         console.log("posting up", res);
         setNewFriend({

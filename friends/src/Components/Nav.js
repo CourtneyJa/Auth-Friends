@@ -13,9 +13,9 @@ const Nav = () => {
       <header>
         <h1>My Friends React App</h1>
         <nav>
-          <NavLink to="/friends" activeClassName="active">
+          <NavLink to='/friends' activeClassName="active">
             Friends
-          </NavLink>
+          </NavLink><br></br>
           {isLogged ? (
             <NavLink
               exact

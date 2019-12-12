@@ -2,18 +2,20 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import Login from "./Login";
 import FriendList from "./FriendList";
+import FriendForm from "./FriendForm";
+import Friends from "./Friends";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props => {
-        if (localStorage.getItem("token")) {
-          return <Component />;
-        } else {
-          return <Redirect to="/login" />;
-        }
-      }}
+      render={props =>
+        localStorage.getItem("token") ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/" />
+        )
+      }
     />
   );
 };
@@ -21,7 +23,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 const Links = () => {
   return (
     <div>
-      <Route exact path="/login" component={Login} />
+      <Route exact path="/" component={Login} />
+      <PrivateRoute exact path="/protect" component={FriendForm} />
+      <PrivateRoute exact path="/protected" component={Friends} />
       <PrivateRoute path="/friends" component={FriendList} />
     </div>
   );

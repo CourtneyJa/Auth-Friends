@@ -14,7 +14,7 @@ const Friends = ({ friend }) => {
   };
   return (
     <div className="friend-card">
-      <h4>{friend.id}</h4>
+      <h4>{friend.name}</h4>
       <p>{friend.age}</p>
       <p>{friend.email}</p>
       <button onClick={handleRemove}>Delete</button>
