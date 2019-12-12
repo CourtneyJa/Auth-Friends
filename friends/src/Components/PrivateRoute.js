@@ -1,11 +1,13 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import Login from "./Login";
+import FriendList from "./FriendList";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={() => {
+      render={props => {
         if (localStorage.getItem("token")) {
           return <Component />;
         } else {
@@ -16,4 +18,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export default PrivateRoute;
+const Links = () => {
+  return (
+    <div>
+      <Route exact path="/login" component={Login} />
+      <PrivateRoute path="/friends" component={FriendList} />
+    </div>
+  );
+};
+
+export default Links;

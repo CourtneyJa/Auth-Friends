@@ -2,24 +2,23 @@ import React, { useState } from "react";
 import axiosWithAuth from "../Utils/AxiosWithAuth";
 
 const FriendForm = () => {
-  const [newHomie, setNewHomie] = useState({
+  const [newFriend, setNewFriend] = useState({
     name: "",
     age: "",
     email: ""
   });
 
   const handleChange = e => {
-    setNewHomie({ ...newHomie, [e.target.name]: e.target.value });
+    setNewFriend({ ...newFriend, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    setLoad(true);
     axiosWithAuth()
-      .post("/friends", newHomie)
+      .post("/friends", newFriend)
       .then(res => {
         console.log("posting up", res);
-        setNewHomie({
+        setNewFriend({
           name: "",
           age: "",
           email: ""
@@ -36,21 +35,21 @@ const FriendForm = () => {
           placeholder="Name"
           type="text"
           name="name"
-          value={newHomie.name}
+          value={newFriend.name}
           onChange={handleChange}
         />
         <input
           placeholder="age"
-          type="age"
+          type="num"
           name="age"
-          value={newHomie.age}
+          value={newFriend.age}
           onChange={handleChange}
         />
         <input
           placeholder="email@email.com"
           type="email"
           name="email"
-          value={newHomie.email}
+          value={newFriend.email}
           onChange={handleChange}
         />
         <button type="submit">Add Friend</button>

@@ -20,6 +20,7 @@ const FriendList = () => {
     <div>
       <h2>Add to the Crew</h2>
       <FriendForm />
+      <h3>You now have {friends.length} friends in your crew.</h3>
       <div className="peeps">
         {friends.map(friend => (
           <Friends key={friend.id} friend={friend} />

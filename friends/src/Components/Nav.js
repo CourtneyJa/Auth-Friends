@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Nav = () => {
-  const [logged, setLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(true);
   const handleLoggedOut = () => {
     localStorage.removeItem("token");
-    setLogged(false);
+    setIsLogged(false);
   };
 
   return (
@@ -16,7 +16,7 @@ const Nav = () => {
           <NavLink to="/friends" activeClassName="active">
             Friends
           </NavLink>
-          {logged ? (
+          {isLogged ? (
             <NavLink
               exact
               to="/"
